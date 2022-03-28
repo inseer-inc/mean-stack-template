@@ -1,6 +1,6 @@
 # MEAN Stack based SPA for Inseer Hiring Challenges.
 
-This repo is a Single Page application based on MEAN stack. It's bundled to get started for a personal website.
+This repo is a Single Page application based on MEAN stack, bundled so that you can get going fast.
 ## Installation
 1. Download the repository. Make sure [node](https://nodejs.org/en/download/) v14 LTS and npm are installed.
 2. Install npm modules: `npm install`
