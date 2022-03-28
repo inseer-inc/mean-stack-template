@@ -1,4 +1,4 @@
-# MEAN Stack based SPA for Personal website.
+# MEAN Stack based SPA for Inseer Hiring Challenges.
 
 This repo is a Single Page application based on MEAN stack. It's bundled to get started for a personal website.
 ## Installation
@@ -8,8 +8,4 @@ This repo is a Single Page application based on MEAN stack. It's bundled to get 
 4. Start up the server: `node server` or `npm start` or use forever to run `forever start server`
 5. View in browser at http://localhost:3000
 
-Use this starter kit to build any MEAN stack application you like.
-
-If you have any questions or requests, email me [here](mailto:manishsvnit007@gmail.com) and we'll keep updating this to make it perfect.
-
-
+Use this starter kit to build a MEAN stack application.
