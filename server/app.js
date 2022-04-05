@@ -11,7 +11,7 @@ const rfs = require('rotating-file-stream');
 const logger = require("./logger")(__filename);
 
 // Load configuration
-const config = requireDir('./config/', {recurse: true});
+const config = requireDir('./config/', { recurse: true });
 
 // Create an app
 const app = {
@@ -23,8 +23,9 @@ const app = {
 };
 
 // Load app modules and controllers
-app.m = app.models = requireDir(app.dir + '/models', {recurse: true});
-app.c = app.controllers = requireDir(app.dir + '/controllers', {recurse: true});
+app.m = app.models = requireDir(app.dir + '/models', { recurse: true });
+if (fs.existsSync(path.join(app.dir, '/controllers')))
+	app.c = app.controllers = requireDir(app.dir + '/controllers', { recurse: true });
 
 // Load auth filters and interceptors
 const auth = require('./auth')(app);
@@ -44,7 +45,7 @@ const accessLogStream = rfs('access.log', {
 	interval: '1d',
 	path: logDirectory
 });
-app.server.use(morgan('combined', {stream: accessLogStream}));
+app.server.use(morgan('combined', { stream: accessLogStream }));
 app.server.use(morgan('dev'));
 
 // Configure routes
@@ -52,13 +53,13 @@ app.router = express.Router();
 require('./routes')(app);
 
 // App entrypoint
-app.run = function() {
+app.run = function () {
 	// Connect to DB
 	mongoose.set('useCreateIndex', true);
-	mongoose.connect(config.db.url, { useNewUrlParser: true, useUnifiedTopology: true }) 
-	.then(() =>  logger.info('DB connection succesful'))
-  	.catch((err) => logger.error(err));
-	
+	mongoose.connect(config.db.url, { useNewUrlParser: true, useUnifiedTopology: true })
+		.then(() => logger.info('DB connection succesful'))
+		.catch((err) => logger.error(err));
+
 	// Start the server
 	this.server.use(this.router);
 	const port = process.env.PORT || 3000; // set our port
